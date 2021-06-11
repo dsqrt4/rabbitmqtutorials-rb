@@ -1,3 +1,4 @@
+.idea/
 /.bundle/
 /.yardoc
 /_yardoc/
@@ -6,5 +7,5 @@
 /pkg/
 /spec/reports/
 /tmp/
-.idea/*
+/vendor/
 *.gem
