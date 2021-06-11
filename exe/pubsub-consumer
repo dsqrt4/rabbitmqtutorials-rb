@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'bunny'
 
-connection = Bunny.new
+connection = Bunny.new(username: 'tutorial', password: 'impostersyndrome')
 connection.start
 
 channel = connection.create_channel
