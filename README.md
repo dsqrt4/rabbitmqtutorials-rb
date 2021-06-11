@@ -1,28 +1,36 @@
 # RabbitMqTutorials
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rabbitmqtutorials`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This project is just me trying to get back into ruby a bit while following along with the [RabbitMQ Tutorials](https://www.rabbitmq.com/tutorial)
+from which most of the code in this project is derived for now.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'rabbitmqtutorials'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install rabbitmqtutorials
+Clone and `cd` into this repo and then install it as stated under [Development](#development) for now.
 
 ## Usage
 
-TODO: Write usage instructions here
+Spin up an instance of RabbitMQ, e.g. in a container:
+
+```shell
+$ podman run --detach\
+             --name tutorial-mq\
+             --hostname tutorial-rabbit\
+             --publish 5672:5672\
+             --publish 15672:15672\
+             --env RABBITMQ_DEFAULT_USER=tutorial\
+             --env RABBITMQ_DEFAULT_PASS=impostersyndrome\
+             rabbitmq:3-management
+```
+
+After installing the Gem, run any of the included executables by typing its name into a terminal:
+
+```shell
+$ helloworld-producer 
+# => [x] Sent 'Hello World!'
+$ helloworld-consumer 
+# => [*] Waiting for messages. To exit press CTRL+C
+# => [x] Received Hello World!
+```
 
 ## Development
 
@@ -30,9 +38,11 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
+**Note:** On Fedora you need to `dnf install ruby-devel` to build the gem.
+
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rabbitmqtutorials.
+This project is not open for contributions.
 
 ## License
 

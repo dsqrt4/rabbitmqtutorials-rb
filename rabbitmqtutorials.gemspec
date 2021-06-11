@@ -6,19 +6,21 @@ Gem::Specification.new do |spec|
   spec.name          = "rabbitmqtutorials"
   spec.version       = RabbitMqTutorials::VERSION
   spec.authors       = ["dsqrt4"]
-  spec.email         = ["44970945+dsqrt4@users.noreply.github.com"]
-
-  spec.summary       = "not yet written"
-  spec.description   = "not yet written"
-  spec.homepage      = "https://github.com/dsqrt4/rabbitmq-rabbitmqtutorials"
+  spec.summary       = "Following along with the Ruby RabbitMQ Tutorials"
+  spec.description   = <<-EOF
+    This project is just me trying to get back into ruby a bit while following along with the
+    [RabbitMQ Tutorials](https://www.rabbitmq.com/tutorial) from which most of the code in this project is derived
+    for now.
+  EOF
+  spec.homepage      = "https://github.com/dsqrt4/rabbitmqtutorials-rb"
   spec.license       = "MIT"
   spec.required_ruby_version = ">= 2.4.0"
 
-  spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+  spec.metadata["allowed_push_host"] = "http://localhost:9292"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/dsqrt4/rabbitmq-rabbitmqtutorials"
-  spec.metadata["changelog_uri"] = "https://github.com/dsqrt4/rabbitmq-rabbitmqtutorials/blob/#{RabbitMqTutorials::VERSION}/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/dsqrt4/rabbitmqtutorials"
+  spec.metadata["changelog_uri"] = "https://github.com/dsqrt4/rabbitmqtutorials/blob/#{RabbitMqTutorials::VERSION}/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
