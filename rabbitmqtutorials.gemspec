@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.summary       = "Following along with the Ruby RabbitMQ Tutorials"
   spec.description   = <<-EOF
     This project is just me trying to get back into ruby a bit while following along with the
-    [RabbitMQ Tutorials](https://www.rabbitmq.com/tutorial) from which most of the code in this project is derived
+    [RabbitMQ Tutorials](https://www.rabbitmq.com/getstarted.html) from which most of the code in this project is derived
     for now.
   EOF
   spec.homepage      = "https://github.com/dsqrt4/rabbitmqtutorials-rb"

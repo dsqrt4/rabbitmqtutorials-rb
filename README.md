@@ -1,6 +1,6 @@
 # RabbitMqTutorials
 
-This project is just me trying to get back into ruby a bit while following along with the [RabbitMQ Tutorials](https://www.rabbitmq.com/tutorial)
+This project is just me trying to get back into ruby a bit while following along with the [RabbitMQ Tutorials](https://www.rabbitmq.com/getstarted.html)
 from which most of the code in this project is derived for now.
 
 ## Installation
