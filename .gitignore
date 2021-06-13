@@ -1,4 +1,6 @@
 .idea/
+/vendor/
+
 /.bundle/
 /.yardoc
 /_yardoc/
@@ -7,5 +9,6 @@
 /pkg/
 /spec/reports/
 /tmp/
-/vendor/
-*.gem
+
+# rspec failure tracking
+.rspec_status
