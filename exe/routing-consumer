@@ -3,7 +3,7 @@ require 'bunny'
 
 abort "Usage: #{$PROGRAM_NAME} [info] [warning] [error]" if ARGV.empty?
 
-connection = Bunny.new(username: 'tutorial', password: 'impostersyndrome')
+connection = Bunny.new
 connection.start
 
 channel = connection.create_channel

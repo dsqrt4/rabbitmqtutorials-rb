@@ -17,8 +17,6 @@ $ podman run --detach\
              --hostname tutorial-rabbit\
              --publish 5672:5672\
              --publish 15672:15672\
-             --env RABBITMQ_DEFAULT_USER=tutorial\
-             --env RABBITMQ_DEFAULT_PASS=impostersyndrome\
              rabbitmq:3-management
 ```
 
