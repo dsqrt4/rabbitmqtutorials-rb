@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+require 'bunny'
+require 'json'
+
+def execute(job)
+  t_start = Time.now
+  sleep(job['complexity'])
+  t_end = Time.now
+  { str: t_start, end: t_end, cmp: job['complexity'] }
+end
+
+puts "STARTING WITH RABBITMQ_URL '#{ENV['RABBITMQ_URL']}'"
+connection = Bunny.new
+connection.start
+
+channel = connection.create_channel
+queue = channel.queue('rpc_queue')
+exchange = channel.default_exchange
+
+puts ' [*] Waiting for messages. To exit press CTRL+C'
+
+begin
+  queue.subscribe(block: true) do |delivery_info, properties, payload|
+    correlation_id = properties.correlation_id
+
+    puts "[#{correlation_id}] executing #{payload}"
+    job    = JSON.parse(payload)
+    result = JSON.dump(execute job)
+
+    puts "[#{correlation_id}] publishing #{result}"
+    puts "publishing: #{result}"
+    exchange.publish(
+      result,
+      routing_key: properties.reply_to,
+      correlation_id: correlation_id,
+      content_type: 'application/json'
+    )
+  end
+rescue Interrupt => _
+  channel.close
+  connection.close
+end
