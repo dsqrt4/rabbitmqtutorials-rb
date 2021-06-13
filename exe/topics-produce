@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+require 'bunny'
+
+puts "STARTING WITH RABBITMQ_URL '#{ENV['RABBITMQ_URL']}'"
+connection = Bunny.new
+connection.start
+
+channel = connection.create_channel
+exchange = channel.topic('topic_logs')
+
+begin
+  puts "type log messages: <routing-key> <message...>"
+  loop do
+    print "log> "
+    rk, _, msg = gets.chomp.partition(' ')
+    exchange.publish(msg, routing_key: rk)
+  end
+rescue Interrupt => _
+  connection.close
+end

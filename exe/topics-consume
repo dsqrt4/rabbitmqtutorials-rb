@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+require 'bunny'
+
+abort "Usage: #{$PROGRAM_NAME} [info] [warning] [error]" if ARGV.empty?
+
+puts "STARTING WITH RABBITMQ_URL '#{ENV['RABBITMQ_URL']}'"
+connection = Bunny.new
+connection.start
+
+channel = connection.create_channel
+exchange = channel.topic('topic_logs')
+queue = channel.queue('', exclusive: true)
+
+ARGV.each { |rk| queue.bind(exchange, routing_key: rk) }
+
+puts ' [*] Waiting for messages. To exit press CTRL+C'
+
+begin
+  queue.subscribe(block: true) do |delivery_info, _properties, msg|
+    puts " [x] #{delivery_info.routing_key}:#{msg}"
+  end
+rescue Interrupt => _
+  channel.close
+  connection.close
+end
