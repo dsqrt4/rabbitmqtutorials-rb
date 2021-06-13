@@ -1,0 +1,16 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  gem:
+    container_name: rmqc
+    build: .
+    environment:
+      RABBITMQ_URL: 'amqp://rmq'
+    links:
+      - rabbitmq
+  rabbitmq:
+    container_name: rmq
+    image: rabbitmq:3-management
+    hostname: tutorial-mq
+    ports:
+    - 5672:5672
+    - 15672:15672
